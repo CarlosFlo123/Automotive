@@ -16,14 +16,8 @@ interface Alarm {
 
 class CarPart {
     private int partID;
-    private double weight;
-    private double cost;
-
-    public CarPart(int p, double w, double c){
-        this.partID = p;
-        this.weight = w;
-        this.cost = c;
-    }
+    private float weight;
+    private float cost;
 
     public void aMethod() {
         System.out.println("This is a car part method");
@@ -51,8 +45,7 @@ class CarDoor extends CarPart implements LockableDoor, Alarm {
     // Car door has an alarm switch for you to turn on/off alarm
     private boolean alarmFlag;
 
-    public CarDoor(int p, double w, double c){
-        super(p, w, c);
+    public CarDoor(){
         this.lockFlag = false;
         this.alarmFlag = false;
     }
@@ -74,13 +67,11 @@ class CarDoor extends CarPart implements LockableDoor, Alarm {
      // Implement this method
      public void lock() {
         this.lockFlag = true;
-        System.out.println("Locking car..");
     }
 
     // Implement this method
     public void unlock() {
         this.lockFlag = false;
-        System.out.println("Unlocking car..");
     }
 
     // To simulate the situation that you open a car while
@@ -111,11 +102,10 @@ class CarDoor extends CarPart implements LockableDoor, Alarm {
 public class TestCar {
     public static void main(String[] args) {
         // I have an sedan car
-        CarDoor sedan = new CarDoor(172364, 90.4, 380.5);
+        CarDoor sedan = new CarDoor();
 
         sedan.open();
         // I close the door
         sedan.close();
-
     }
 }
